@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const Banner = () => {
@@ -77,6 +77,7 @@ const Banner = () => {
   const img = currentMovie().bannerImage;
 
   return (
+    <>
     <BannerWrapper>
       <BannerImage  src={img}  alt="Featured Movie" />
  
@@ -86,10 +87,12 @@ const Banner = () => {
       </BannerContent>
       <IconWrapper>
         <FontAwesomeIcon icon={faAngleLeft} onClick={()=>handleSidle("Left")} />
-        <FontAwesomeIcon icon={faChevronRight} onClick={()=>handleSidle("Right")} />
+        <FontAwesomeIcon icon={faAngleRight} onClick={()=>handleSidle("Right")} />
       </IconWrapper>
 
     </BannerWrapper>
+    
+    </>
   );
 };
 
@@ -111,7 +114,7 @@ const BannerImage = styled.img`
 
 const BannerContent = styled.div`
   position: absolute;
-  top: 30%;
+  bottom: 3%;
   left: 20px;
   color: white;
 
@@ -132,7 +135,7 @@ const BannerContent = styled.div`
 const IconWrapper = styled.div`
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
   gap: 10px;

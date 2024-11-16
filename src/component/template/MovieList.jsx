@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef , useEffect} from 'react';
 import styled from 'styled-components';
 
 const MovieList = () => {
@@ -15,41 +15,82 @@ const movies = [
     { title: 'Frozen', category: 'Animation', img: 'https://via.placeholder.com/200x300?text=Frozen' },
     ];
     
+    const scrollRef = useRef(null);
+
+    useEffect(()=>{
+        const scrollInterval = setInterval(()=>{
+
+
+            if (scrollRef.current) {
+                const container = scrollRef.current;
+
+                container.scrollLeft += 2; 
+           
+                if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+                    container.scrollLeft = 0;
+                }
+            }
+        },40) 
+
+        return () => clearInterval(scrollInterval);
+    },[])
 
   return (
     <>
-        <SectionTitle>Recommended Movies</SectionTitle>
-        <MoviesContainer>
-        {movies.map((movie, index) => (
-            <MovieCard key={index}>
-            <MovieImage src={movie.img} alt={movie.title} />
-            <MovieTitle>
-                <h3>{movie.title}</h3>
-                <p>{movie.category}</p>
-            </MovieTitle>
-            </MovieCard>
-        ))}
-        </MoviesContainer>
+        <MovieSection>
+            <SectionTitle>
+                <h3>Recommended Movies</h3>
+                <a>See All ›</a>    
+            </SectionTitle>
+            <MoviesContainer ref={scrollRef}>
+            {movies.map((movie, index) => (
+                <MovieCard key={index}>
+                <MovieImage src={movie.img} alt={movie.title} />
+                <MovieTitle>
+                    <h3>{movie.title}</h3>
+                    <p>{movie.category}</p>
+                </MovieTitle>
+                </MovieCard>
+            ))}
+            </MoviesContainer>
+        </MovieSection>
     </>
     
   );
 };
-
-const SectionTitle = styled.h3`
-    font-size: 24px;
-    margin-left: 21px;
+const MovieSection = styled.section`
+    margin : 10px 0;
 `;
 
+const SectionTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    h3{
+        font-size: 24px;
+        margin-left: 21px;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        margin: 0 21px;
+        text-decoration: underline;
+        color: #422be2;
+        cursor:pointer;
+    }   
+    
+`;
 const MoviesContainer = styled.div`
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden; /* Prevent vertical scrollbar */
   gap: 20px;
   padding: 20px;
   scroll-behavior: smooth;
 
   /* Add scrollbar styling */
   &::-webkit-scrollbar {
-    height: 8px;
+    height: 8px; /* Only horizontal scrollbar */
   }
   &::-webkit-scrollbar-thumb {
     background-color: #555;
@@ -59,6 +100,8 @@ const MoviesContainer = styled.div`
     background-color: #f0f0f0;
   }
 `;
+
+
 
 const MovieCard = styled.div`
   flex: 0 0 200px; /* Fixed width */
@@ -81,7 +124,7 @@ const MovieImage = styled.img`
 `;
 
 const MovieTitle = styled.div`
-
+    padding: 10px;
   h3{
     color: white;
     padding: 0px;
