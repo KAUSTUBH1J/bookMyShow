@@ -4,7 +4,10 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" style={{'background': 'linear-gradient(#e66465, #9198e5)'}}>
+    <nav
+      className="navbar navbar-expand-lg bg-body-tertiary fixed-top"
+      
+    >
       <div className="container-fluid">
         {/* Logo or Brand */}
         <a className="navbar-brand" href="#">
@@ -98,7 +101,12 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" onClick={()=>{setIsLoggedIn(true)}} >
+                    <a
+                      className="nav-link"
+                      onClick={() => {
+                        setIsLoggedIn(true);
+                      }}
+                    >
                       Login
                     </a>
                   </li>
@@ -108,7 +116,7 @@ const Navbar = () => {
 
             {/* Search Form */}
             {isLoggedIn && (
-              <form className="d-flex " role="search">
+              <form className="d-flex" role="search">
                 <input
                   className="form-control me-2"
                   type="search"

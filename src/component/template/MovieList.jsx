@@ -1,8 +1,8 @@
-import React,{useRef , useEffect} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const MovieList = () => {
-const movies = [
+  const movies = [
     { title: 'Avengers: Endgame', category: 'Action', img: 'https://via.placeholder.com/200x300?text=Avengers' },
     { title: 'Inception', category: 'Sci-Fi', img: 'https://via.placeholder.com/200x300?text=Inception' },
     { title: 'The Dark Knight', category: 'Action', img: 'https://via.placeholder.com/200x300?text=Dark+Knight' },
@@ -13,73 +13,89 @@ const movies = [
     { title: 'Parasite', category: 'Thriller', img: 'https://via.placeholder.com/200x300?text=Parasite' },
     { title: 'Joker', category: 'Drama', img: 'https://via.placeholder.com/200x300?text=Joker' },
     { title: 'Frozen', category: 'Animation', img: 'https://via.placeholder.com/200x300?text=Frozen' },
-    ];
-    
-    const scrollRef = useRef(null);
+  ];
 
-    useEffect(()=>{
-        const scrollInterval = setInterval(()=>{
+  const scrollRef = useRef(null);
+  const [isUserScrolling, setIsUserScrolling] = useState(false); // Track manual scroll state
 
+  useEffect(() => {
+    let scrollInterval;
 
-            if (scrollRef.current) {
-                const container = scrollRef.current;
+    // Auto-scroll logic
+    if (!isUserScrolling) {
+      scrollInterval = setInterval(() => {
+        if (scrollRef.current) {
+          const container = scrollRef.current;
+          container.scrollLeft += 2;
 
-                container.scrollLeft += 2; 
-           
-                if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-                    container.scrollLeft = 0;
-                }
-            }
-        },40) 
+          // Reset scroll when it reaches the end
+          if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+            container.scrollLeft = 0;
+          }
+        }
+      }, 40);
+    }
 
-        return () => clearInterval(scrollInterval);
-    },[])
+    return () => clearInterval(scrollInterval); // Cleanup on unmount or when user scrolls
+  }, [isUserScrolling]);
+
+  // Handle user scroll interaction
+  const handleScroll = () => {
+    setIsUserScrolling(true);
+
+    // Reset `isUserScrolling` after 2 seconds of inactivity
+    const timeout = setTimeout(() => {
+      setIsUserScrolling(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  };
 
   return (
     <>
-        <MovieSection>
-            <SectionTitle>
-                <h3>Recommended Movies</h3>
-                <a>See All ›</a>    
-            </SectionTitle>
-            <MoviesContainer ref={scrollRef}>
-            {movies.map((movie, index) => (
-                <MovieCard key={index}>
-                <MovieImage src={movie.img} alt={movie.title} />
-                <MovieTitle>
-                    <h3>{movie.title}</h3>
-                    <p>{movie.category}</p>
-                </MovieTitle>
-                </MovieCard>
-            ))}
-            </MoviesContainer>
-        </MovieSection>
+      <MovieSection>
+        <SectionTitle>
+          <h3>Recommended Movies</h3>
+          <a>See All ›</a>
+        </SectionTitle>
+        <MoviesContainer ref={scrollRef} onScroll={handleScroll}>
+          {movies.map((movie, index) => (
+            <MovieCard key={index}>
+              <MovieImage src={movie.img} alt={movie.title} />
+              <MovieTitle>
+                <h3>{movie.title}</h3>
+                <p>{movie.category}</p>
+              </MovieTitle>
+            </MovieCard>
+          ))}
+        </MoviesContainer>
+      </MovieSection>
     </>
-    
   );
 };
+
 const MovieSection = styled.section`
-    margin : 10px 0;
+  margin: 10px 0;
 `;
 
 const SectionTitle = styled.div`
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    h3{
-        font-size: 24px;
-        margin-left: 21px;
-    }
-    a{
-        display: flex;
-        align-items: center;
-        margin: 0 21px;
-        text-decoration: underline;
-        color: #422be2;
-        cursor:pointer;
-    }   
-    
+  h3 {
+    font-size: 24px;
+    margin-left: 21px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    margin: 0 21px;
+    text-decoration: underline;
+    color: #422be2;
+    cursor: pointer;
+  }
 `;
+
 const MoviesContainer = styled.div`
   display: flex;
   overflow-x: auto;
@@ -101,8 +117,6 @@ const MoviesContainer = styled.div`
   }
 `;
 
-
-
 const MovieCard = styled.div`
   flex: 0 0 200px; /* Fixed width */
   height: 320px; /* Fixed height */
@@ -111,7 +125,7 @@ const MovieCard = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
-  cursor:pointer;
+  cursor: pointer;
   &:hover {
     transform: scale(1.05);
   }
@@ -124,15 +138,16 @@ const MovieImage = styled.img`
 `;
 
 const MovieTitle = styled.div`
-    padding: 10px;
-  h3{
+  padding: 10px;
+
+  h3 {
     color: white;
     padding: 0px;
     margin: 0px;
     font-size: 16px;
     text-align: center;
-  }  
-  p{
+  }
+  p {
     color: white;
     padding: 0px;
     margin: 0px;
