@@ -148,7 +148,7 @@ const MovieTitle = styled.div`
     text-align: center;
   }
   p {
-    color: white;
+    color: white; 
     padding: 0px;
     margin: 0px;
     font-size: 16px;
