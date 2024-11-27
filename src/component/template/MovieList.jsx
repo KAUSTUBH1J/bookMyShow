@@ -23,6 +23,7 @@ const MovieList = () => {
 
     // Auto-scroll logic
     if (!isUserScrolling) {
+      
       scrollInterval = setInterval(() => {
         if (scrollRef.current) {
           const container = scrollRef.current;
