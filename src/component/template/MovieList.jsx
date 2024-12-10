@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import MoviesCard from './MoviesCard';
+import { Link } from 'react-router-dom';
 
 const MovieList = () => {
   const movies = [
@@ -57,17 +59,12 @@ const MovieList = () => {
       <MovieSection>
         <SectionTitle>
           <h3>Recommended Movies</h3>
-          <a>See All ›</a>
+          {/* <a href=""></a> */}
+          <Link to="/movies">See All ›</Link>
         </SectionTitle>
         <MoviesContainer ref={scrollRef} onScroll={handleScroll}>
           {movies.map((movie, index) => (
-            <MovieCard key={index}>
-              <MovieImage src={movie.img} alt={movie.title} />
-              <MovieTitle>
-                <h3>{movie.title}</h3>
-                <p>{movie.category}</p>
-              </MovieTitle>
-            </MovieCard>
+           <MoviesCard  key={index} img={movie.img} title={movie.title} category={movie.category}  type="vertical"/>
           ))}
         </MoviesContainer>
       </MovieSection>
@@ -118,43 +115,8 @@ const MoviesContainer = styled.div`
   }
 `;
 
-const MovieCard = styled.div`
-  flex: 0 0 200px; /* Fixed width */
-  height: 320px; /* Fixed height */
-  background-color: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
 
-const MovieImage = styled.img`
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-`;
 
-const MovieTitle = styled.div`
-  padding: 10px;
 
-  h3 {
-    color: white;
-    padding: 0px;
-    margin: 0px;
-    font-size: 16px;
-    text-align: center;
-  }
-  p {
-    color: white; 
-    padding: 0px;
-    margin: 0px;
-    font-size: 16px;
-    text-align: center;
-  }
-`;
 
 export default MovieList;
