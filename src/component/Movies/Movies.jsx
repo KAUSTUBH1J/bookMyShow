@@ -1,5 +1,5 @@
 import React from 'react';
-import MoviesCard from '../Template/MoviesCard'
+import MoviesCard from '../Template/MoviesCard';
 
 export default function MoviesList() {
 
@@ -15,13 +15,13 @@ export default function MoviesList() {
     { title: 'Joker', category: 'Drama', img: 'https://via.placeholder.com/200x300?text=Joker' },
     { title: 'Frozen', category: 'Animation', img: 'https://via.placeholder.com/200x300?text=Frozen' },
   ];
-
+  
   return (
     <div className="container my-4">
 
       <h2 className="text-center mb-4">Movies</h2>
 
-      <div className="mb-4">
+      <div className="mb-4 ">
         <input type="text" className="form-control" placeholder="Search movie..."/>
       </div>
 
