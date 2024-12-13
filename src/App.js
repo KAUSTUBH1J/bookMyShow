@@ -1,17 +1,21 @@
 import React from 'react';
-import Banner from './component/template/Banner';
-import MovieList from './component/template/MovieList';
-import Navbar from './component/template/Navbar';
-import Login from './component/template/LoginPopUp';
+import { BrowserRouter as Route } from 'react-router-dom';
+import AppRoutes from './Routes';
+import Navbar from './component/Template/Navbar';
+import Login from './component/Template/LoginPopUp';
+import MoviePopUp from './component/Template/MoviePopUp';
 
 const App = () => {
+  const userRole = localStorage.getItem('role') || 'customer'; 
   return (
-    <div>
+    <>
       <Navbar/>
-      <Banner />
-      <MovieList />
+      <Route>
+        <AppRoutes/>
+      </Route>
       <Login/>
-    </div>
+      <MoviePopUp/>
+    </>
   );
 };
 
