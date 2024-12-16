@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Login from './LoginPopUp';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -83,14 +83,8 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        onClick={() => {
-                          setIsLoggedIn(true);
-                        }}
-                      >
-                        Login
-                      </a>
+                      
+                        <Login/>
                     </li>
                   </>
                 )}
