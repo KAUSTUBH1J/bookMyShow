@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Banner from '../Template/Banner';
-import MovieList from '../Template/MovieList';
+import Banner from '../Templates/Banner';
+import MovieList from '../Templates/MovieList';
 
 
 export default function Home() {

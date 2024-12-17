@@ -1,5 +1,5 @@
 import React from 'react';
-import MoviesCard from '../Template/MoviesCard';
+import MoviesCard from '../Templates/MoviesCard';
 
 export default function MoviesList() {
 
