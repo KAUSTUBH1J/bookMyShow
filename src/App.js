@@ -10,11 +10,11 @@ const App = () => {
   useEffect(()=>{
     let encodedData = localStorage.getItem('encodedData');
     console.log('app js useEffect ' +encodedData);
-
-    const decodedData = JSON.parse(atob(encodedData));
-
-    console.log(decodedData);
-    dispatch(SetRole(decodedData));
+    if(encodedData){
+      const decodedData = JSON.parse(atob(encodedData));
+      console.log(decodedData);
+      dispatch(SetRole(decodedData));
+    }
   });
 
   return (
