@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    PopUp   : false,
-    Role    : '',
-    IsLogin : false
+    PopUp       : false,
+    UserDetails : {},
+    IsLogin     : false
 }
 
 
@@ -19,8 +19,10 @@ const Login = createSlice({
             state.PopUp = false;
         },
         SetRole: (state,action) =>{
-            state.Role      = action.payload;
-            state.IsLogin   = true; 
+            state.UserDetails   = action.payload;
+            state.IsLogin       = true;
+            console.log('setRole function call ')
+            console.log(action.payload)
         }
     },
 }) 

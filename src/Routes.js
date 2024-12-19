@@ -11,12 +11,12 @@ import { useSelector } from 'react-redux';
 
 const AppRoutes = () => {
   const [userRole, setUserRole] = useState('user');
-
+  const {UserDetails} = useSelector((state)=> state.Login);
   // Component to protect admin routes
   const AdminRoute = ({ children }) => {
-    
+    console.log('user type '+UserDetails.user_type);
     // Redirect to home if the user is not an admin
-    return true ? children : <Navigate to="/" replace />;
+    return UserDetails.user_type === 'admin' ? children : <Navigate to="/" replace />;
   };
 
   

@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { IsLogin } = useSelector((state) => state.Login);
+  const { IsLogin,UserDetails } = useSelector((state) => state.Login);
 
-  let encodedData = localStorage.getItem('encodedData');
 
   return (
     <>
@@ -33,8 +32,12 @@ const Navbar = () => {
 
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                {isLoggedIn ? (
+                {IsLogin ? (
                   <>
+                    <li  className="nav-item ">
+
+                      {UserDetails.user_type == 'admin'?<Link className="nav-link" to="/Admin/Dashboard">Dashborad</Link>:''} 
+                    </li>
                     <li className="nav-item dropdown">
                       <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Movies
@@ -67,9 +70,36 @@ const Navbar = () => {
                         Contact Us
                       </a>
                     </li>
-                    <li className="nav-item">
-                      
+                    <li className="nav-item dropdown">
+                      <a
+                        className="nav-link dropdown-toggle d-flex align-items-center"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <img
+                          src="https://via.placeholder.com/30"
+                          alt="Profile"
+                          className="rounded-circle me-2"
+                          style={{ width: "30px", height: "30px" }}
+                        />
+                        Username
+                      </a>
+                      <ul className="dropdown-menu">
+                        <li>
+                          <a className="dropdown-item" href="/profile">
+                            View Profile
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/logout">
+                            Logout
+                          </a>
+                        </li>
+                      </ul>
                     </li>
+
                   </>
                 ) : (
                   <>
@@ -84,7 +114,7 @@ const Navbar = () => {
                       }
                       
                     </li>
-                    <Link to="/Admin/Dashboard">Dashborad</Link>
+                    
                   </>
                 )}
               </ul>

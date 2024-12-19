@@ -4,7 +4,6 @@ import { ShowPopUp,RemovePopUp,SetRole } from "../../Store/Login/login";
 import axios from "../../Config/axiosConfig";
 
 
-
 function Login (){
 	
 	const dispatch = useDispatch();
@@ -37,7 +36,7 @@ function Login (){
                 // Save JWT token to localStorage
 				localStorage.setItem('jwtToken', `${response.data.token_type} ${response.data.access_token}`);
 				
-				const encodedData = btoa(JSON.stringify({ user_id: response.data.user.user_id, role: response.data.user.user_type }));
+				const encodedData = btoa(JSON.stringify( response.data.user));
 				localStorage.setItem('encodedData', encodedData);
 				
                 
