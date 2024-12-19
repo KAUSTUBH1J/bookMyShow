@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    PopUp : false
+    PopUp   : false,
+    Role    : '',
+    IsLogin : false
 }
 
 
@@ -10,17 +12,19 @@ const Login = createSlice({
     initialState,
     reducers: {
         ShowPopUp: (state) => {
-            
             state.PopUp = true;
-            console.log('PopUp store'+state.PopUp)
+            console.log('PopUp store'+state.PopUp);
         },
         RemovePopUp:(state) =>{
             state.PopUp = false;
+        },
+        SetRole: (state,action) =>{
+            state.Role      = action.payload;
+            state.IsLogin   = true; 
         }
-        
     },
 }) 
 
-export const  { ShowPopUp,RemovePopUp } = Login.actions;
+export const  { ShowPopUp,RemovePopUp,SetRole } = Login.actions;
 
 export default Login;

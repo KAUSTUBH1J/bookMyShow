@@ -1,7 +1,9 @@
 import React,{useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ShowPopUp,RemovePopUp } from "../../Store/Login/login";
+import { ShowPopUp,RemovePopUp,SetRole } from "../../Store/Login/login";
 import axios from "../../Config/axiosConfig";
+
+
 
 function Login (){
 	
@@ -10,39 +12,42 @@ function Login (){
 	
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
-
+	const [apiError, setApiError] = useState('');
 	const [error, setError] = useState({
 		userName: '',
 		password: ''
 	});
 
+
 	const handleLogSubmit = async (e) => {
 		e.preventDefault();
 		if(!userName || !password){
-			console.log('error')
+			console.log('error');
 		}else{
 			
-			console.log("jhkwejrklsjadklf")
 			try {
-                const data = {
-                    username: userName,
-                    password: password
-                };
+				const formData = new URLSearchParams();
+                formData.append("username", userName);
+                formData.append("password", password);
 
-                const response = await axios.post('api/v1/users/token', data);
+                const response = await axios.post('api/v1/users/token/', formData.toString());
                 console.log('Login successful:', response);
 				
-				
+
                 // Save JWT token to localStorage
-                localStorage.setItem('jwtToken', `${response.data.data.token}`);
+				localStorage.setItem('jwtToken', `${response.data.token_type} ${response.data.access_token}`);
+				
+				const encodedData = btoa(JSON.stringify({ user_id: response.data.user.user_id, role: response.data.user.user_type }));
+				localStorage.setItem('encodedData', encodedData);
+				
                 
             } catch (error) {
-                console.error('Error logging in:', error);
-                // if (error.response && error.response.data) {
-                //     setApiError(error.response.data.message || "An error occurred during login.");
-                // } else {
-                //     setApiError("An unexpected error occurred. Please try again later.");
-                // }
+                if (error.response && error.response.data) {
+                    setApiError(error.response.data.message || "An error occurred during login.");
+                } else {
+                    setApiError("An unexpected error occurred. Please try again later.");
+                }
+				localStorage.setItem('is_login', false);  
             } finally {
                 // setIsSubmitting(false);
             }
@@ -94,10 +99,10 @@ function Login (){
 								</div>
 								<div className="modal-footer">
 									<p className="text-center w-100 mb-0">
-									Don't have an account?{" "}
-									<a href="#" className="text-decoration-none">
-										Sign up
-									</a>
+										Don't have an account?{" "}
+										<a href="#" className="text-decoration-none">
+											Sign up
+										</a>
 									</p>
 								</div>
 							</div>

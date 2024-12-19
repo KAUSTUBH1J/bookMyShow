@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from './LoginPopUp';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { IsLogin } = useSelector((state) => state.Login);
+
+  let encodedData = localStorage.getItem('encodedData');
 
   return (
     <>
@@ -9,18 +14,11 @@ const Navbar = () => {
         <div className="container-fluid">
           {/* Logo or Brand */}
           <a className="navbar-brand" href="#">
-            {isLoggedIn ? 'Dashboard' : 'BookMyShow'}
+            { isLoggedIn ? 'Dashboard' : 'BookMyShow' }
           </a>
 
           {/* Toggle Button for Offcanvas */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
-          >
+          <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
 
@@ -70,9 +68,7 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#">
-                        FAQ
-                      </a>
+                      
                     </li>
                   </>
                 ) : (
@@ -83,9 +79,12 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="nav-item">
+                      {
+                        !IsLogin?<Login/>:'user'
+                      }
                       
-                        <Login/>
                     </li>
+                    <Link to="/Admin/Dashboard">Dashborad</Link>
                   </>
                 )}
               </ul>
@@ -103,13 +102,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div style={{ 'width': '100%', 'height': '40px'}}>
-
-      </div>
     </>
-    
-
-);
+  );
 };
 
 export default Navbar;
