@@ -31,8 +31,7 @@ const AppRoutes = () => {
       console.log(' app js Decoded User Info:', decodedData);
     }
     setUserRole(role);
-
-  },[])
+  },[]);
 
   return (
     <Routes>

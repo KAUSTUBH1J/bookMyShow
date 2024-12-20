@@ -15,18 +15,23 @@ const Login = createSlice({
             state.PopUp = true;
             console.log('PopUp store'+state.PopUp);
         },
-        RemovePopUp:(state) =>{
+        RemovePopUp: (state) =>{
             state.PopUp = false;
         },
-        SetRole: (state,action) =>{
+        SetDetails: (state,action) =>{
             state.UserDetails   = action.payload;
             state.IsLogin       = true;
-            console.log('setRole function call ')
+            console.log('setDetails function call ');
             console.log(action.payload)
+        },
+        RemoveDetails: (state,action) =>{
+            state.UserDetails   = '';
+            state.IsLogin       = false;
+            console.log('RemoveDetails Function are called');
         }
     },
 }) 
 
-export const  { ShowPopUp,RemovePopUp,SetRole } = Login.actions;
+export const  { ShowPopUp,RemovePopUp,SetDetails } = Login.actions;
 
 export default Login;
