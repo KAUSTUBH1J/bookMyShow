@@ -1,9 +1,11 @@
 import React,{useEffect} from 'react';
 import Login from '../../component/Templates/LoginPopUp'
-
-
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import{ToggleSideBar} from '../../Store/Settings/setting';
 export default function Navbar(props) {
-    
+    const dispatch = useDispatch();
+
   return (
     <>
         <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -24,7 +26,8 @@ export default function Navbar(props) {
                 </div>
                 <ul className="navbar-nav  justify-content-end">
                     <li className="nav-item d-flex align-items-center">
-                    <a className="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a>
+                        {/* <a  target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a> */}
+                        <Link className="btn btn-outline-primary btn-sm mb-0 me-3" to="/">Go To Site </Link>
                     </li>
                     <li className="nav-item d-flex align-items-center">
                     <a href="javascript:;" className="nav-link text-body font-weight-bold px-0">
@@ -33,13 +36,13 @@ export default function Navbar(props) {
                     </a>
                     </li>
                     <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <a href="javascript:;" className="nav-link text-body p-0" id="iconNavbarSidenav">
+                    <span onClick={()=>dispatch(ToggleSideBar())} className="nav-link text-body p-0" id="iconNavbarSidenav">
                         <div className="sidenav-toggler-inner">
                         <i className="sidenav-toggler-line"></i>
                         <i className="sidenav-toggler-line"></i>
                         <i className="sidenav-toggler-line"></i>
                         </div>
-                    </a>
+                    </span>
                     </li>
                     <li className="nav-item px-3 d-flex align-items-center">
                     <a href="javascript:;" className="nav-link text-body p-0">

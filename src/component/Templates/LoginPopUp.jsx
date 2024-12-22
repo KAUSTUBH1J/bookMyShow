@@ -1,27 +1,26 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ShowPopUp,RemovePopUp,SetRole } from "../../Store/Login/login";
+import { ShowPopUp,RemovePopUp,SetDetails } from "../../Store/Login/login";
 import axios from "../../Config/axiosConfig";
-
+import { useNavigate } from "react-router-dom";
 
 function Login (){
 	
 	const dispatch = useDispatch();
 	const {PopUp} = useSelector((state)=>state.Login);
-	
+	const navigate = useNavigate();
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
-	const [apiError, setApiError] = useState('');
-	const [error, setError] = useState({
-		userName: '',
-		password: ''
-	});
-
+	const [error, setError] = useState('');
+	
+	useEffect(() => {
+		setError('');
+	} ,[userName,password]);
 
 	const handleLogSubmit = async (e) => {
 		e.preventDefault();
 		if(!userName || !password){
-			console.log('error');
+			setError('Please fill all the fields');
 		}else{
 			
 			try {
@@ -38,17 +37,21 @@ function Login (){
 				
 				const encodedData = btoa(JSON.stringify( response.data.user));
 				localStorage.setItem('encodedData', encodedData);
-				
+				dispatch(SetDetails(response.data.user));
                 
             } catch (error) {
                 if (error.response && error.response.data) {
-                    setApiError(error.response.data.message || "An error occurred during login.");
+                    setError(error.response.data.detail || "An error occurred during login.");
                 } else {
-                    setApiError("An unexpected error occurred. Please try again later.");
+                    setError("An unexpected error occurred. Please try again later.");
                 }
+				console.warn('Login failed:', error);
 				localStorage.setItem('is_login', false);  
             } finally {
-                // setIsSubmitting(false);
+				// Reset the form
+				setUserName('');
+				setPassword('');
+				dispatch(RemovePopUp());
             }
 			
 		}
@@ -77,7 +80,7 @@ function Login (){
 											<label htmlFor="username" className="form-label">
 											Username
 											</label>
-											<input type="text"	id="username" className="form-control" placeholder="Username" value={userName} onChange={(e)=>{setUserName(e.target.value)}}/>
+											<input type="text"	id="username" className="form-control" placeholder="Username" value={userName} onChange={(e)=>{setUserName(e.target.value) }}/>
 											<span className="error-msg ">{error.userName}</span>
 										</div>
 										<div className="mb-3">
@@ -91,11 +94,15 @@ function Login (){
 											Forgot Password?
 											</a>
 										</div>
+										<div className="error" style={{color: "red", margin: "10px 0", fontWeight: "bold"}}>
+											{error}
+										</div>
 										<button type="submit" className="btn btn-primary w-100">
 											Sign in
 										</button>
 									</form>
 								</div>
+								
 								<div className="modal-footer">
 									<p className="text-center w-100 mb-0">
 										Don't have an account?{" "}

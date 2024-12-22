@@ -32,6 +32,6 @@ const Login = createSlice({
     },
 }) 
 
-export const  { ShowPopUp,RemovePopUp,SetDetails } = Login.actions;
+export const  { ShowPopUp,RemovePopUp,SetDetails,RemoveDetails } = Login.actions;
 
 export default Login;

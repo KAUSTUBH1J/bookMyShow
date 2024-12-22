@@ -15,7 +15,7 @@ export default function Dashboard() {
       <Sidebar />
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <Navbar pageName="Dashboard" />
-        <Link to="/">home </Link>
+        
         <div className="container-fluid py-4">
           <div className="row">
             <Counter/>

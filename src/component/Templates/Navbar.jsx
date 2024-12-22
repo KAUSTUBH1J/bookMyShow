@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Login from './LoginPopUp';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { RemoveDetails } from '../../Store/Login/login';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
+  const dispatch = useDispatch();
 
-
+  const logout = () => {
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('encodedData');
+    dispatch(RemoveDetails());
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" >
@@ -93,9 +99,9 @@ const Navbar = () => {
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="/logout">
+                          <button className="dropdown-item" onClick={() => logout()}>
                             Logout
-                          </a>
+                          </button>
                         </li>
                       </ul>
                     </li>
