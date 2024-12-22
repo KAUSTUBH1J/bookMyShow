@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { formToJSON } from "axios";
 
 const initialState = {
     PopUp       : false,
+    Form        : 'Signin',
     UserDetails : {},
     IsLogin     : false
 }
@@ -17,6 +19,7 @@ const Login = createSlice({
         },
         RemovePopUp: (state) =>{
             state.PopUp = false;
+            state.Form = 'Signin';
         },
         SetDetails: (state,action) =>{
             state.UserDetails   = action.payload;
@@ -28,10 +31,16 @@ const Login = createSlice({
             state.UserDetails   = '';
             state.IsLogin       = false;
             console.log('RemoveDetails Function are called');
+        },
+        SetFormSignIn: (state) =>{
+            state.Form = 'Signin';
+        },
+        SetFormSignUp: (state) =>{
+            state.Form = 'Signup';  
         }
     },
 }) 
 
-export const  { ShowPopUp,RemovePopUp,SetDetails,RemoveDetails } = Login.actions;
+export const  { ShowPopUp,RemovePopUp,SetDetails,RemoveDetails, SetFormSignIn, SetFormSignUp } = Login.actions;
 
 export default Login;
