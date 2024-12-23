@@ -2,43 +2,46 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import IconsBookMyShow from '../../Icons/nameOfBookMyShow.png';
 import CSSLoader from '../../../Function/CssLoader';
-import { useSelector, useDispatch } from 'react-redux';
-import { ShowSideBar } from '../../../Store/Setting/Setting';
-
 const Sidebar = () => {
   CSSLoader('Assets/CSS/AdminMaster/soft-ui-dashboard.css');
 
   const menuItems = [
-    { label: 'Dashboard', icon: 'tachometer', path: '/Admin/dashboard' },
-    { label: 'Movies Master', icon: 'film', path: '/Admin/movies' },
-    { label: 'Billing', icon: 'file-invoice-dollar', path: '/Admin/billing' },
-    { label: 'Virtual Reality', icon: 'vr-cardboard', path: '/admin/vr' },
-    { label: 'Profile', icon: 'user-circle', path: '/profile' },
-    { label: 'Sign In', icon: 'sign-in-alt', path: '/sign-in' },
-    { label: 'Sign Up', icon: 'user-plus', path: '/sign-up' },
+    {
+      label: 'Dashboard',
+      icon: 'dashboard',
+      path: '/Admin/dashboard',
+    },
+    {
+      label: 'Movies Master',
+      icon: 'movies',
+      path: '/Admin/movies',
+    },
+    {
+      label: 'Billing',
+      icon: 'billing',
+      path: '/Admin/billing',
+    },
+    {
+      label: 'Virtual Reality',
+      icon: 'vr',
+      path: '/admin/vr',
+    },
+    {
+      label: 'Profile',
+      icon: 'profile',
+      path: '/profile',
+    },
+    {
+      label: 'Sign In',
+      icon: 'sign-in',
+      path: '/sign-in',
+    },
+    {
+      label: 'Sign Up',
+      icon: 'sign-up',
+      path: '/sign-up',
+    },
   ];
-
-  const dispatch = useDispatch();
-  const { Sidebar } = useSelector((state) => state.Setting);
-  const [classNameAsideBar, setClassNameSideBar] = useState('');
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 1200;
-      dispatch(ShowSideBar(isMobile));
-
-      setClassNameSideBar(
-        isMobile
-          ? 'sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y bg-white d-none'
-          : 'sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y'
-      );
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [Sidebar, dispatch]);
 
   return (
     <aside className={classNameAsideBar} id="sidenav-main">
@@ -48,9 +51,9 @@ const Sidebar = () => {
           aria-hidden="true"
           id="iconSidenav"
         ></i>
-        <Link to="/" className="navbar-brand m-0">
-          <img src={IconsBookMyShow} className="navbar-brand-img h-100" alt="Book My Show Logo"/>
-        </Link>
+        <a className="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank" rel="noopener noreferrer">
+          <img src={IconsBookMyShow} className="navbar-brand-img h-100" alt="main_logo" />
+        </a>
       </div>
       <hr className="horizontal dark mt-0" />
       <div className="collapse navbar-collapse w-auto" id="sidenav-collapse-main">

@@ -10,19 +10,22 @@ import Table  from './AdminMaster/Components/Tables/Index';
 import { useSelector } from 'react-redux';
 
 const AppRoutes = () => {
-  
-  const {UserDetails} = useSelector((state)=> state.Login);
 
+
+  const {UserDetails} = useSelector((state)=> state.Login);
+  
   const AdminRoute = ({ children }) => {
     let encodedData = localStorage.getItem('encodedData');
     if(encodedData){
+      console.log('app js useEffect ' +encodedData);
       const decodedData = JSON.parse(atob(encodedData));
-
+  
       return decodedData.user_type === 'admin' ? children : <Navigate to="/" replace />;
     }
-    
+    return <Navigate to="/" replace />;
   };
 
+  
 
   return (
     <Routes>
