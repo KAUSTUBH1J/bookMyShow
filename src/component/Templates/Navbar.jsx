@@ -3,6 +3,7 @@ import Login from './LoginPopUp';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RemoveDetails } from '../../Store/Login/login';
+import { ShowProfilePopUp } from '../../Store/Setting/setting';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
@@ -13,6 +14,12 @@ const Navbar = () => {
     localStorage.removeItem('encodedData');
     dispatch(RemoveDetails());
   }
+
+  const handleShowProfile = ()=>{
+    console.log('helloo');
+    dispatch(ShowProfilePopUp());
+  }
+  
 
   return (
     <>
@@ -95,7 +102,7 @@ const Navbar = () => {
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" >
+                          <a className="dropdown-item" onClick={()=>{handleShowProfile()}} >
                             View Profile
                           </a>
                         </li>
