@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Login from './LoginPopUp';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { SetDetails, RemoveDetails } from '../../Store/Login/login';
+
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
-
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -88,14 +91,14 @@ const Navbar = () => {
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="/profile">
+                          <a className="dropdown-item" >
                             View Profile
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="/logout">
+                          <button className="dropdown-item" onClick={()=>{dispatch(RemoveDetails())}}>
                             Logout
-                          </a>
+                          </button>
                         </li>
                       </ul>
                     </li>

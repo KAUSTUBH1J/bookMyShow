@@ -1,6 +1,6 @@
 import react from 'react';
 
-export function Review(){
+export default function Review(){
     return (
         <>
             <div className="col-lg-6 col-12 mt-4 mt-lg-0">

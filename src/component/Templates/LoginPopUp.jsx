@@ -1,12 +1,13 @@
 import React,{useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ShowPopUp,RemovePopUp,SetRole } from "../../Store/Login/login";
+import { ShowPopUp,RemovePopUp,SetDetails } from "../../Store/Login/login";
 import axios from "../../Config/axiosConfig";
-
+import { useNavigate } from "react-router-dom";
 
 function Login (){
 	
 	const dispatch = useDispatch();
+	const Navigate = useNavigate(); 
 	const {PopUp} = useSelector((state)=>state.Login);
 	
 	const [userName, setUserName] = useState('');
@@ -38,8 +39,9 @@ function Login (){
 				
 				const encodedData = btoa(JSON.stringify( response.data.user));
 				localStorage.setItem('encodedData', encodedData);
-				
-                
+				dispatch(SetDetails(response.data.user));
+                console.log('try end');
+
             } catch (error) {
                 if (error.response && error.response.data) {
                     setApiError(error.response.data.message || "An error occurred during login.");
@@ -48,7 +50,8 @@ function Login (){
                 }
 				localStorage.setItem('is_login', false);  
             } finally {
-                // setIsSubmitting(false);
+                console.log("sumbit login Form Successfully");
+				dispatch(RemovePopUp());
             }
 			
 		}

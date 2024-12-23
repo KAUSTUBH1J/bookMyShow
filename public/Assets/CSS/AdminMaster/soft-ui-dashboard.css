@@ -3861,19 +3861,19 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #000;
-  --bs-btn-bg: #f97316;
-  --bs-btn-border-color: #f97316;
+  --bs-btn-bg: #d71b21;
+  --bs-btn-border-color: #d71b21;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: rgb(249.9, 136, 56.95);
-  --bs-btn-hover-border-color: rgb(249.6, 129, 45.3);
+  --bs-btn-hover-bg: rgb(250, 57, 57);
+  --bs-btn-hover-border-color: rgb(250, 45, 45);
   --bs-btn-focus-shadow-rgb: 212, 98, 19;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: rgb(250.2, 143, 68.6);
-  --bs-btn-active-border-color: rgb(249.6, 129, 45.3);
+  --bs-btn-active-bg: rgb(250, 69, 69);
+  --bs-btn-active-border-color: rgb(250, 45, 45);
   --bs-btn-active-shadow: none;
-  --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #f97316;
-  --bs-btn-disabled-border-color: #f97316;
+  --bs-btn-disabled-color: #1f1919;
+  --bs-btn-disabled-bg: #f91616;
+  --bs-btn-disabled-border-color: #f91616;
 }
 
 .btn-secondary {
@@ -21748,8 +21748,8 @@ fieldset:disabled .btn {
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  background-color: #f97316;
-  border-color: #f97316;
+  background-color: #ca171d; ;
+  border-color: #ca171d;;
 }
 
 .btn-primary .btn.bg-outline-primary,
@@ -23884,7 +23884,7 @@ html {
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
   display: block;
   overflow: auto;
-  height: calc(100vh - 360px);
+  /* height: calc(100vh - 360px); */
 }
 
 .navbar-vertical.navbar-expand-xs>[class*=container] {
@@ -23982,7 +23982,7 @@ html {
   .navbar-vertical.navbar-expand-sm .navbar-collapse {
     display: block;
     overflow: auto;
-    height: calc(100vh - 360px);
+    /* height: calc(100vh - 360px); */
   }
 
   .navbar-vertical.navbar-expand-sm>[class*=container] {

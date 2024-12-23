@@ -1,5 +1,5 @@
 import React from "react";
-export function Table(){
+export default function Table(){
     return(
     <>
     <div className="col-lg-8 col-md-6 mb-md-0 mb-4">

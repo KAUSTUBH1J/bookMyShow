@@ -1,6 +1,6 @@
 import React from "react";
 
-export function UpCommingList(){
+export default function UpCommingList(){
     return(
         <>
         <div className="col-lg-4 col-md-6">

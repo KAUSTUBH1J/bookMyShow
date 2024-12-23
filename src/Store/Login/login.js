@@ -27,11 +27,12 @@ const Login = createSlice({
         RemoveDetails: (state,action) =>{
             state.UserDetails   = '';
             state.IsLogin       = false;
+            localStorage.clear();
             console.log('RemoveDetails Function are called');
         }
     },
 }) 
 
-export const  { ShowPopUp,RemovePopUp,SetDetails } = Login.actions;
+export const  { ShowPopUp,RemovePopUp,SetDetails,RemoveDetails } = Login.actions;
 
 export default Login;
