@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    Sidebar       : false
+    Sidebar         : false,
+    profilePopUp    : false,
 }
 
 
@@ -13,7 +14,9 @@ const Setting = createSlice({
             state.Sidebar = action.payload;
             console.log('ShowSideBar  '+state.Sidebar);
         },
-        
+        CloseProfilePopUp: (state,action) =>{
+            state.
+        }
     },
 }) 
 

@@ -31,6 +31,7 @@ const SaleOverview = lazy(()=>
 
 export default function Dashboard() {
   CSSLoader('Assets/CSS/AdminMaster/soft-ui-dashboard.css');
+  
   return (
     <>
       <Sidebar />

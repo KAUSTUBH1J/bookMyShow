@@ -2,12 +2,15 @@ import React from 'react';
 import Banner from '../Templates/Banner';
 import MovieList from '../Templates/MovieList';
 import Navbar from '../Templates/Navbar';
+import UserProfile from '../Templates/UserProfile';
 
 
 export default function Home() {
   return (
     <>
+
         <Navbar/>
+        <UserProfile/>
         <Banner />
         <MovieList />
         <div className='d-flex justify-content-center mt-3'>

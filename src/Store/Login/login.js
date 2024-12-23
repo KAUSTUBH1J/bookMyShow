@@ -15,7 +15,7 @@ const Login = createSlice({
     reducers: {
         ShowPopUp: (state) => {
             state.PopUp = true;
-            console.log('PopUp store'+state.PopUp);
+            // console.log('PopUp store'+state.PopUp);
         },
         RemovePopUp: (state) =>{
             state.PopUp = false;
@@ -24,14 +24,14 @@ const Login = createSlice({
         SetDetails: (state,action) =>{
             state.UserDetails   = action.payload;
             state.IsLogin       = true;
-            console.log('setDetails function call ');
-            console.log(action.payload)
+            // console.log('setDetails function call ');
+            // console.log(action.payload)
         },
         RemoveDetails: (state,action) =>{
             state.UserDetails   = '';
             state.IsLogin       = false;
             localStorage.clear();
-            console.log('RemoveDetails Function are called');
+            // console.log('RemoveDetails Function are called');
         },
         SetFormSignIn: (state) =>{
             state.Form = 'Signin';

@@ -1,11 +1,12 @@
 import React,{useEffect} from 'react';
 import Login from '../../component/Templates/LoginPopUp'
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import{ToggleSideBar} from '../../Store/Settings/setting';
+
 export default function Navbar(props) {
     const dispatch = useDispatch();
-
+    const {IsLogin, UserDetails} = useSelector(()=>(state)=>state.Login);
   return (
     <>
         <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -18,59 +19,21 @@ export default function Navbar(props) {
                     <h6 className="font-weight-bolder mb-0">{props.pageName}</h6>
                 </nav>
                 <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <div className="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div className="input-group">
-                    <span className="input-group-text text-body"><i className="fas fa-search" aria-hidden="true"></i></span>
-                    <input type="text" className="form-control" placeholder="Type here..."/>
-                    </div>
-                </div>
-                <ul className="navbar-nav  justify-content-end">
-                    <li className="nav-item d-flex align-items-center">
-                        {/* <a  target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a> */}
-                        <Link className="btn btn-outline-primary btn-sm mb-0 me-3" to="/">Go To Site </Link>
-                    </li>
-                    <li className="nav-item d-flex align-items-center">
-                    <a href="javascript:;" className="nav-link text-body font-weight-bold px-0">
-                        <i className="fa fa-user me-sm-1"></i>
-                        <Login/>
-                    </a>
-                    </li>
-                    <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <span onClick={()=>dispatch(ToggleSideBar())} className="nav-link text-body p-0" id="iconNavbarSidenav">
-                        <div className="sidenav-toggler-inner">
-                        <i className="sidenav-toggler-line"></i>
-                        <i className="sidenav-toggler-line"></i>
-                        <i className="sidenav-toggler-line"></i>
+                    <div className="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div className="input-group">
+                        <span className="input-group-text text-body"><i className="fas fa-search" aria-hidden="true"></i></span>
+                        <input type="text" className="form-control" placeholder="Type here..."/>
                         </div>
-                    </span>
-                    </li>
-                    <li className="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" className="nav-link text-body p-0">
-                        <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                    </a>
-                    </li>
-                    <li className="nav-item dropdown pe-2 d-flex align-items-center">
-                    <a href="javascript:;" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i className="fa fa-bell cursor-pointer"></i>
-                    </a>
-                    <ul className="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li className="mb-2">
-                        <a className="dropdown-item border-radius-md" href="javascript:;">
-                            <div className="d-flex py-1">
-                            <div className="my-auto">
-                                <img src="../assets/img/team-2.jpg" className="avatar avatar-sm  me-3 "/>
-                            </div>
-                            <div className="d-flex flex-column justify-content-center">
-                                <h6 className="text-sm font-weight-normal mb-1">
-                                <span className="font-weight-bold">New message</span> from Laur
-                                </h6>
-                                <p className="text-xs text-secondary mb-0 ">
-                                <i className="fa fa-clock me-1"></i>
-                                13 minutes ago
-                                </p>
-                            </div>
-                            </div>
-                        </a>
+                    </div>
+                    <ul className="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <Link class="btn btn-outline-primary btn-sm mb-0 me-3" to='/' >Go To Side</Link>
+                        </li>
+                        <li className="nav-item d-flex align-items-center">
+                            <a href="javascript:;" className="nav-link text-body font-weight-bold px-0">
+                                
+                                {IsLogin?<Login/>:<i className="fa fa-user me-sm-1  fs-5"></i>}
+                            </a>
                         </li>
                         <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" className="nav-link text-body p-0" id="iconNavbarSidenav">

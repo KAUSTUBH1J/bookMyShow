@@ -4,17 +4,61 @@ import { ShowPopUp,RemovePopUp,SetDetails,SetFormSignIn,SetFormSignUp } from "..
 import axios from "../../Config/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import CSSLoader from "../../Function/CssLoader";
+import GetDateAndTime from '../../Function/CurrentDate';
 
 function Login (){
 	CSSLoader('Assets/CSS/UserSide/main.css');
 
-	const dispatch = useDispatch();
-	const {PopUp ,Form} = useSelector((state)=>state.Login);
-	const navigate = useNavigate();
-	const [userName, setUserName] = useState('');
-	const [password, setPassword] = useState('');
-	const [error, setError] = useState('');
-	
+	const dispatch 					= useDispatch();
+	const {PopUp ,Form} 			= useSelector((state)=>state.Login);
+	const navigate 					= useNavigate();
+	const [userName, setUserName] 	= useState('');
+	const [password, setPassword] 	= useState('');
+	const [error, setError] 		= useState('');
+
+
+	useEffect(() => {
+		setError('');
+	} ,[userName,password]);
+
+	const handleSignINSubmit = async (e) => {
+		e.preventDefault();
+		if(!userName || !password){
+			setError('Please fill all the fields');
+		}else{
+			try {
+				const formData = new URLSearchParams();
+                formData.append("username", userName);
+                formData.append("password", password);
+
+                const response = await axios.post('api/v1/users/token/', formData.toString(), {
+					contentType: 'application/x-www-form-urlencoded'
+				});
+                console.log('Login successful:', response);
+				
+                // Save JWT token to localStorage
+				localStorage.setItem('jwtToken', `${response.data.token_type} ${response.data.access_token}`);
+				
+				const encodedData = btoa(JSON.stringify( response.data.user));
+				localStorage.setItem('encodedData', encodedData);
+				dispatch(SetDetails(response.data.user));
+                dispatch(RemovePopUp());
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    setError(error.response.data.detail || "An error occurred during login.");
+                } else {
+                    setError("An unexpected error occurred. Please try again later.");
+                }
+				console.warn('Login failed:', error);
+				localStorage.setItem('is_login', false);  
+            } finally {
+				// Reset the form
+				setUserName('');
+				setPassword('');
+            }
+			
+		}
+	}
 
 	// Registration
 	const [userDetail, setUserDetail] = useState({
@@ -34,6 +78,8 @@ function Login (){
 		password : '',
 		cpassword : ''
 	});
+
+	const [ RApiError , SetRApiError] = useState({});
 
 	const handleChanges = (e) => {
 		let value = e.target.value;
@@ -89,81 +135,65 @@ function Login (){
 		return isError;
 	};
 
+	
+
 	const handleSignUpSummit = async (e) =>{
 		e.preventDefault();
 		const ValidationCheck = validate();
 		if(!ValidationCheck){
 			try{
-				const formData = new URLSearchParams();
+				const Data = userDetail;
 
-                Object.entries(userDetail).forEach(([key, value]) => {
-					if(key !== 'cpassword')
-					formData.append(key, value);
-				});
-				formData.append("first_name", userName);
-                formData.append("last_name", password);
-				formData.append("email", userName);
-                formData.append("phone_number", password);
-				
+				Data['user_type'] 	= 'user';
+				Data['created_at'] 	= GetDateAndTime();
+				Data['updated_at'] 	= GetDateAndTime();
 
-
-
-				const response = await axios.post('/api/v1/users/',formData);
+				const response = await axios.post('/api/v1/users/',Data);
 				console.log('SignUp successful:', response);
+
+				setUserDetail({
+					first_name : '',
+					last_name : '',
+					email : '',
+					phone_number : '',
+					password : '',
+					cpassword : ''
+				});
+
+				dispatch(SetFormSignIn());
+
 			}catch (error){
-				console.warn('failed: ', error);
-			}finally {
-				// dispatch(RemovePopUp());
-            }
+				console.warn('failed: ', error.response.data.detail);
+				SetRApiError(error.response.data.detail);
+			}
 		}
 	}
 
-		
-
-
-	useEffect(() => {
+	
+	const closeBtn = () =>{
+		dispatch(RemovePopUp());
+		setUserDetail({
+			first_name : '',
+			last_name : '',
+			email : '',
+			phone_number : '',
+			password : '',
+			cpassword : ''
+		});
+		setRError({
+			first_name : '',
+			last_name : '',
+			email : '',
+			phone_number : '',
+			password : '',
+			cpassword : ''
+		});
+		setUserName('');
+		setPassword('');
 		setError('');
-	} ,[userName,password]);
-
-	const handleSignINSubmit = async (e) => {
-		e.preventDefault();
-		if(!userName || !password){
-			setError('Please fill all the fields');
-		}else{
-			
-			try {
-				const formData = new URLSearchParams();
-                formData.append("username", userName);
-                formData.append("password", password);
-
-                const response = await axios.post('api/v1/users/token/', formData.toString());
-                console.log('Login successful:', response);
-				
-
-                // Save JWT token to localStorage
-				localStorage.setItem('jwtToken', `${response.data.token_type} ${response.data.access_token}`);
-				
-				const encodedData = btoa(JSON.stringify( response.data.user));
-				localStorage.setItem('encodedData', encodedData);
-				dispatch(SetDetails(response.data.user));
-                dispatch(RemovePopUp());
-            } catch (error) {
-                if (error.response && error.response.data) {
-                    setError(error.response.data.detail || "An error occurred during login.");
-                } else {
-                    setError("An unexpected error occurred. Please try again later.");
-                }
-				console.warn('Login failed:', error);
-				localStorage.setItem('is_login', false);  
-            } finally {
-				// Reset the form
-				setUserName('');
-				setPassword('');
-				// 
-            }
-			
-		}
 	}
+
+
 
     return(
 		<>
@@ -182,7 +212,7 @@ function Login (){
 									<h5 className="modal-title">
 										{Form === 'Signin'? 'Sign In' : 'Sign Up'}
 									</h5>
-									<button	type="button" className="btn-close"	onClick={() => dispatch(RemovePopUp())}></button>
+									<button	type="button" className="btn-close"	onClick={() => closeBtn()}></button>
 								</div>
 								<div className="modal-body">
 									{Form === 'Signin'? <form className="space-y-4" onSubmit={handleSignINSubmit}>
@@ -259,6 +289,7 @@ function Login (){
 										<div className="error" style={{color: "red", margin: "10px 0", fontWeight: "bold"}}>
 											{error}
 										</div>
+										{RApiError && Array.isArray(RApiError) && RApiError.map((ele)=>{return <span className="error">{ele.error}</span>})}
 										<button type="submit" className="btn btn-primary w-100">
 											Sign Up
 										</button>
@@ -269,12 +300,12 @@ function Login (){
 									<p className="text-center w-100 mb-0">
 										Don't have an account?{" "}
 										{Form === 'Signin'?
-										<button onClick={()=>{ dispatch(SetFormSignUp())}} className="text-decoration-none">
+										<a onClick={()=>{ dispatch(SetFormSignUp())}} className="text-decoration-none cursor-pointer">
 											Sign up
-											</button>:
-										<button onClick={()=>{ dispatch(SetFormSignIn())}} className="text-decoration-none">
+											</a>:
+										<a onClick={()=>{ dispatch(SetFormSignIn())}} className="text-decoration-none cursor-pointer">
 											Sign In
-										</button>}
+										</a>}
 									</p>
 								</div>
 							</div>

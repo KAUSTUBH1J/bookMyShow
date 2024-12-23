@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import IconsBookMyShow from '../../Icons/nameOfBookMyShow.png';
 import CSSLoader from '../../../Function/CssLoader';
+import { useSelector, useDispatch } from 'react-redux';
+import { TiggleSideBar } from '../../../Store/Settings/setting';
+
 const Sidebar = () => {
   CSSLoader('Assets/CSS/AdminMaster/soft-ui-dashboard.css');
 
@@ -42,6 +45,28 @@ const Sidebar = () => {
       path: '/sign-up',
     },
   ];
+
+  const dispatch = useDispatch();
+  const { ShowSideBar } = useSelector((state) => state.Setting);
+  const [classNameAsideBar, setClassNameSideBar] = useState('');
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 1200;
+        dispatch(TiggleSideBar(isMobile?0:1));
+     
+      console.log('UseEffect ShowSideBar: ', ShowSideBar);
+      if (ShowSideBar === 0) {
+        setClassNameSideBar('sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y bg-white d-none');        
+      } else if (ShowSideBar === 1) {
+        setClassNameSideBar('sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y');
+      }else{
+        setClassNameSideBar('sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y  bg-white ');
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, [ShowSideBar, dispatch,]);
 
   return (
     <aside className={classNameAsideBar} id="sidenav-main">

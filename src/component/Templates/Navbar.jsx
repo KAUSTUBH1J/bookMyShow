@@ -7,12 +7,13 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
   const dispatch = useDispatch();
-
+  
   const logout = () => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('encodedData');
     dispatch(RemoveDetails());
   }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" >
@@ -90,7 +91,7 @@ const Navbar = () => {
                           className="rounded-circle me-2"
                           style={{ width: "30px", height: "30px" }}
                         />
-                        Username
+                        {UserDetails.email}
                       </a>
                       <ul className="dropdown-menu">
                         <li>

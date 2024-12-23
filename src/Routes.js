@@ -8,6 +8,7 @@ import SelectShow from './component/Movies/SelectShow';
 import Dashboard from './AdminMaster/Components/Dashboard/Dashboard';
 import Table  from './AdminMaster/Components/Tables/Index';
 import { useSelector } from 'react-redux';
+import UserProfile from './component/Templates/UserProfile';
 
 const AppRoutes = () => {
 
@@ -17,7 +18,7 @@ const AppRoutes = () => {
   const AdminRoute = ({ children }) => {
     let encodedData = localStorage.getItem('encodedData');
     if(encodedData){
-      console.log('app js useEffect ' +encodedData);
+      
       const decodedData = JSON.parse(atob(encodedData));
   
       return decodedData.user_type === 'admin' ? children : <Navigate to="/" replace />;

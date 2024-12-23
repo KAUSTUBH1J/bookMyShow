@@ -2,3 +2,9 @@
     color: red;
     font-weight: 500;
 }
+
+.cursor-pointer{
+    cursor: pointer !important;
+}
+
+

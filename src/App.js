@@ -6,19 +6,15 @@ import { SetDetails } from './Store/Login/login';
 
 const App = () => {
   const dispatch = useDispatch();
-  
 
-  
   useEffect(()=>{
     let encodedData = localStorage.getItem('encodedData');
     if(encodedData){
-      console.log('app js useEffect ' +encodedData);
       const decodedData = JSON.parse(atob(encodedData));
   
-      console.log(decodedData);
       dispatch(SetDetails(decodedData));
     }
-  });
+  },[]);
 
   return (
     <>
