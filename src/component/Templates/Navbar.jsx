@@ -3,7 +3,7 @@ import Login from './LoginPopUp';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RemoveDetails } from '../../Store/Login/login';
-import { ShowProfilePopUp } from '../../Store/Setting/setting';
+import { ShowProfilePopUp } from '../../Store/Settings/setting';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
@@ -101,10 +101,10 @@ const Navbar = () => {
                         {UserDetails.email}
                       </a>
                       <ul className="dropdown-menu">
-                        <li>
-                          <a className="dropdown-item" onClick={()=>{handleShowProfile()}} >
+                        <li className='cursor-pointer'>
+                          <button className="dropdown-item " onClick={()=>{handleShowProfile()}} >
                             View Profile
-                          </a>
+                          </button>
                         </li>
                         <li>
                           <button className="dropdown-item" onClick={() => logout()}>

@@ -7,4 +7,6 @@
     cursor: pointer !important;
 }
 
-
+.flex-none{
+    flex: none;
+}

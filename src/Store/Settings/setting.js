@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    ShowSideBar : 0,// 0: hidden, 1: show 2: mobile
+    ShowSideBar     : 0,
+    ProfilePopUp    : false,
 }
 
 
@@ -21,9 +22,20 @@ const setting = createSlice({
                 state.ShowSideBar = 2;
             console.log('Setting ToggleSideBar store '+state.ShowSideBar);
         },
+        ShowSideBar: (state,action) => {
+            // state.Sidebar = action.payload;
+            // console.log('ShowSideBar  '+state.Sidebar);
+        },
+        CloseProfilePopUp: (state,action) =>{
+            state.ProfilePopUp = false;
+        },
+        ShowProfilePopUp: (state) =>{
+            console.log('sdfsakdfjlkasdjf')
+            state.ProfilePopUp = true;
+        }
     },
 }) 
 
-export const  { TiggleSideBar,ToggleSideBar } = setting.actions;
+export const  { TiggleSideBar, ToggleSideBar, ShowSideBar, CloseProfilePopUp, ShowProfilePopUp } = setting.actions;
 
 export default setting;

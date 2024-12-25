@@ -11,7 +11,7 @@ const App = () => {
     let encodedData = localStorage.getItem('encodedData');
     if(encodedData){
       const decodedData = JSON.parse(atob(encodedData));
-  
+      
       dispatch(SetDetails(decodedData));
     }
   },[]);

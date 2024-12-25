@@ -18,7 +18,7 @@ function Login (){
 
 
 	useEffect(() => {
-		setError('');
+		// setError('');
 	} ,[userName,password]);
 
 	const handleSignINSubmit = async (e) => {
@@ -41,6 +41,7 @@ function Login (){
 				
 				const encodedData = btoa(JSON.stringify( response.data.user));
 				localStorage.setItem('encodedData', encodedData);
+				
 				dispatch(SetDetails(response.data.user));
                 dispatch(RemovePopUp());
             } catch (error) {
@@ -212,7 +213,7 @@ function Login (){
 									<h5 className="modal-title">
 										{Form === 'Signin'? 'Sign In' : 'Sign Up'}
 									</h5>
-									<button	type="button" className="btn-close"	onClick={() => closeBtn()}></button>
+									<button	type="button" className="btn-close flex-none"	onClick={() => closeBtn()}></button>
 								</div>
 								<div className="modal-body">
 									{Form === 'Signin'? <form className="space-y-4" onSubmit={handleSignINSubmit}>
