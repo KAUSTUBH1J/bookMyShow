@@ -4,7 +4,7 @@ import { ShowPopUp,RemovePopUp,SetDetails,SetFormSignIn,SetFormSignUp } from "..
 import axios from "../../Config/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import CSSLoader from "../../Function/CssLoader";
-import GetDateAndTime from '../../Function/CurrentDate';
+import {GetDateAndTime} from '../../Function/CurrentDate';
 
 function Login (){
 	CSSLoader('Assets/CSS/UserSide/main.css');

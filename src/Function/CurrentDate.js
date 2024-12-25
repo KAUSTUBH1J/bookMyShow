@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function GetDateAndTime  () {
+export function GetDateAndTime  () {
     const now = new Date();
     
     const year = now.getFullYear();
@@ -13,5 +13,3 @@ function GetDateAndTime  () {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
 }
-
-export default GetDateAndTime; 

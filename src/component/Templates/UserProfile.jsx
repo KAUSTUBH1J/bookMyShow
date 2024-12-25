@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CloseProfilePopUp } from '../../Store/Settings/setting';
 import axios from '../../Config/axiosConfig';
 import {GetUserDetails} from '../../Function/ApiFunction';
+import {GetDateAndTime} from '../../Function/CurrentDate';
 
 export default function UserProfile() {
 
@@ -27,11 +28,10 @@ export default function UserProfile() {
         "email": "",
         "phone_number": "",
     });
+
     useEffect(() => {
         if (UserDetails?.user_id) {
-            
             fetchUserDetails();
-
         }
     }, [UserDetails.user_id]);
 
@@ -109,10 +109,19 @@ export default function UserProfile() {
         const isValidate = validation();
         if(!isValidate){
             try {
+                user['password']    = UserDetails.password;
+                user['updated_at']  = GetDateAndTime();
                 const response = await axios.put(`/api/v1/users/${user.user_id}`,user);
-				console.log('SignUp successful:', response);
+                if(response.status === 201){
+                    console.log("successfull");
+                }
+                console.log(response);
+				dispatch(CloseProfilePopUp());
+                handleEdit('show');
             } catch (error) {
+                console.log('error ');
                 console.log(error);
+
             }
         }
     }
@@ -130,6 +139,7 @@ export default function UserProfile() {
 
                     <div className="card-body">
                         <h5 className="card-title">Profile Details</h5>
+                        <hr/>
                         <div className="row mb-3">
                             <label className="col-sm-4 fw-bold">First Name:</label>
                             <div className="col-sm-8" id="first-name">
