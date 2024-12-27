@@ -34,7 +34,7 @@ function Login (){
                 const response = await axios.post('api/v1/users/token/', formData.toString(), {
 					contentType: 'application/x-www-form-urlencoded'
 				});
-                console.log('Login successful:', response);
+                // console.log('Login successful:', response);
 				
                 // Save JWT token to localStorage
 				localStorage.setItem('jwtToken', `${response.data.token_type} ${response.data.access_token}`);

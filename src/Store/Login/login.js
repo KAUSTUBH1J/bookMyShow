@@ -24,8 +24,8 @@ const Login = createSlice({
         SetDetails: (state,action) =>{
             state.UserDetails   = action.payload;
             state.IsLogin       = true;
-            console.log('setDetails function call ');
-            console.log(action.payload)
+            // console.log('setDetails function call ');
+            // console.log(action.payload)
         },
         RemoveDetails: (state,action) =>{
             state.UserDetails   = '';

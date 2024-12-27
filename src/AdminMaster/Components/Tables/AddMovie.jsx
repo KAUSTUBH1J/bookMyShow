@@ -56,7 +56,7 @@ export default function Index() {
                       <td>{movie.description}</td>
                       <td>
                         <img
-                          src={`C:/Users/kaustubh.jadhav/Desktop/Git hub/Backend/BookMyShow/app/` + movie.poster[0].file_path || "https://via.placeholder.com/50"}
+                          src={movie.poster || "https://via.placeholder.com/50"}
                           alt="Poster"
                           className="img-thumbnail"
                           width="50"

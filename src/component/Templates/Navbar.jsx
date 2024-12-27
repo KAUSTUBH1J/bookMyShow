@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RemoveDetails } from '../../Store/Login/login';
 import { ShowProfilePopUp } from '../../Store/Settings/setting';
+
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { IsLogin,UserDetails } = useSelector((state) => state.Login);
@@ -16,14 +17,13 @@ const Navbar = () => {
   }
 
   const handleShowProfile = ()=>{
-    console.log('helloo');
     dispatch(ShowProfilePopUp());
   }
   
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" >
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div className="container-fluid">
           {/* Logo or Brand */}
           <a className="navbar-brand" href="#">
@@ -126,9 +126,7 @@ const Navbar = () => {
                       {
                         !IsLogin?<Login/>:'user'
                       }
-                      
                     </li>
-                    
                   </>
                 )}
               </ul>

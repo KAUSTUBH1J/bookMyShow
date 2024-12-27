@@ -7,6 +7,7 @@ import Movies from './component/Movies/Movies';
 import SelectShow from './component/Movies/SelectShow';
 import Dashboard from './AdminMaster/Components/Dashboard/Dashboard';
 import Table  from './AdminMaster/Components/Tables/Index';
+import AddMovie from './AdminMaster/Components/Tables/AddMovie'
 import { useSelector } from 'react-redux';
 import UserProfile from './component/Templates/UserProfile';
 
@@ -37,6 +38,7 @@ const AppRoutes = () => {
       
       <Route path="/Admin/Dashboard" element={ <AdminRoute><Dashboard /></AdminRoute>} />
       <Route path="/Admin/movies" element={<AdminRoute><Table /></AdminRoute>} />
+      <Route path="/Admin/movies/AddMovie" element={<AdminRoute><AddMovie /></AdminRoute>} />
     </Routes>
   );
 };

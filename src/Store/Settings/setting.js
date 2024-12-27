@@ -5,14 +5,13 @@ const initialState = {
     ProfilePopUp    : false,
 }
 
-
 const setting = createSlice({
-    name: 'Setting',
+    name: 'setting',
     initialState,
     reducers: {
         TiggleSideBar: (state, action) => {
             state.ShowSideBar = action.payload;
-            console.log('Setting TiggleSideBar store '+state.ShowSideBar);
+            // console.log('Setting TiggleSideBar store '+state.ShowSideBar);
         },
         ToggleSideBar: (state, action) => {
             // console.log('Setting ToggleSideBar store '+state.ShowSideBar);
@@ -20,22 +19,17 @@ const setting = createSlice({
                 state.ShowSideBar = 0;
             else
                 state.ShowSideBar = 2;
-            console.log('Setting ToggleSideBar store '+state.ShowSideBar);
-        },
-        ShowSideBar: (state,action) => {
-            // state.Sidebar = action.payload;
-            // console.log('ShowSideBar  '+state.Sidebar);
+            // console.log('Setting ToggleSideBar store '+state.ShowSideBar);
         },
         CloseProfilePopUp: (state,action) =>{
             state.ProfilePopUp = false;
         },
         ShowProfilePopUp: (state) =>{
-            console.log('sdfsakdfjlkasdjf')
             state.ProfilePopUp = true;
         }
     },
 }) 
 
-export const  { TiggleSideBar, ToggleSideBar, ShowSideBar, CloseProfilePopUp, ShowProfilePopUp } = setting.actions;
+export const  { TiggleSideBar, ToggleSideBar,  CloseProfilePopUp, ShowProfilePopUp } = setting.actions;
 
 export default setting;

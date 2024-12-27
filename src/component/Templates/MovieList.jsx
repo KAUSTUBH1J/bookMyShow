@@ -20,27 +20,27 @@ const MovieList = () => {
   const scrollRef = useRef(null);
   const [isUserScrolling, setIsUserScrolling] = useState(false); // Track manual scroll state
 
-  useEffect(() => {
-    let scrollInterval;
+  // useEffect(() => {
+  //   let scrollInterval;
 
-    // Auto-scroll logic
-    if (!isUserScrolling) {
+  //   // Auto-scroll logic
+  //   if (!isUserScrolling) {
       
-      scrollInterval = setInterval(() => {
-        if (scrollRef.current) {
-          const container = scrollRef.current;
-          container.scrollLeft += 2;
+  //     scrollInterval = setInterval(() => {
+  //       if (scrollRef.current) {
+  //         const container = scrollRef.current;
+  //         container.scrollLeft += 2;
 
-          // Reset scroll when it reaches the end
-          if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-            container.scrollLeft = 0;
-          }
-        }
-      }, 40);
-    }
+  //         // Reset scroll when it reaches the end
+  //         if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+  //           container.scrollLeft = 0;
+  //         }
+  //       }
+  //     }, 40);
+  //   }
 
-    return () => clearInterval(scrollInterval); // Cleanup on unmount or when user scrolls
-  }, [isUserScrolling]);
+  //   return () => clearInterval(scrollInterval); // Cleanup on unmount or when user scrolls
+  // }, [isUserScrolling]);
 
   // Handle user scroll interaction
   const handleScroll = () => {

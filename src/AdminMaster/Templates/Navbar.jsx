@@ -26,8 +26,8 @@ export default function Navbar(props) {
                         </div>
                     </div>
                     <ul className="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
-                            <Link class="btn btn-outline-primary btn-sm mb-0 me-3" to='/' >Go To Side</Link>
+                        <li className="nav-item d-flex align-items-center">
+                            <Link className="btn btn-outline-primary btn-sm mb-0 me-3" to='/' >Go To Side</Link>
                         </li>
                         <li className="nav-item d-flex align-items-center">
                             <a href="javascript:;" className="nav-link text-body font-weight-bold px-0">
@@ -96,8 +96,8 @@ export default function Navbar(props) {
                                         <div className="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
                                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                             <title>credit-card</title>
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                                                <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fillRule="nonzero">
                                                 <g transform="translate(1716.000000, 291.000000)">
                                                     <g transform="translate(453.000000, 454.000000)">
                                                     <path className="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>

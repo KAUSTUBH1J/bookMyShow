@@ -11,50 +11,51 @@ const Sidebar = () => {
   const menuItems = [
     {
       label: 'Dashboard',
-      icon: 'dashboard',
-      path: '/Admin/dashboard',
+      icon : 'dashboard',
+      path : '/Admin/dashboard',
     },
     {
       label: 'Movies Master',
-      icon: 'movies',
-      path: '/Admin/movies',
+      icon : 'movies',
+      path : '/Admin/movies',
     },
     {
       label: 'Billing',
-      icon: 'billing',
-      path: '/Admin/billing',
+      icon : 'billing',
+      path : '/Admin/billing',
     },
     {
       label: 'Virtual Reality',
-      icon: 'vr',
-      path: '/admin/vr',
+      icon : 'vr',
+      path : '/admin/vr',
     },
     {
       label: 'Profile',
-      icon: 'profile',
-      path: '/profile',
+      icon : 'profile',
+      path : '/profile',
     },
     {
       label: 'Sign In',
-      icon: 'sign-in',
-      path: '/sign-in',
+      icon : 'sign-in',
+      path : '/sign-in',
     },
     {
       label: 'Sign Up',
-      icon: 'sign-up',
-      path: '/sign-up',
+      icon : 'sign-up',
+      path : '/sign-up',
     },
   ];
 
   const dispatch = useDispatch();
-  const { ShowSideBar } = useSelector((state) => state.Setting);
+  const { ShowSideBar } = useSelector((state) => state.setting);
   const [classNameAsideBar, setClassNameSideBar] = useState('');
+  
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < 1200;
-        dispatch(TiggleSideBar(isMobile?0:1));
+      dispatch(TiggleSideBar(isMobile?0:1));
      
-      console.log('UseEffect ShowSideBar: ', ShowSideBar);
+      // console.log('UseEffect ShowSideBar: ', ShowSideBar);
       if (ShowSideBar === 0) {
         setClassNameSideBar('sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y bg-white d-none');        
       } else if (ShowSideBar === 1) {
