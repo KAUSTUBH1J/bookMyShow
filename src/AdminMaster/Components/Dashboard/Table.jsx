@@ -19,9 +19,9 @@ export default function Table(){
                       <i className="fa fa-ellipsis-v text-secondary"></i>
                     </a>
                     <ul className="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Another action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Something else here</a></li>
                     </ul>
                   </div>
                 </div>
@@ -52,16 +52,16 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img src="../assets/img/team-1.jpg" alt="team1"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
                             <img src="../assets/img/team-2.jpg" alt="team2"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
                             <img src="../assets/img/team-3.jpg" alt="team3"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img src="../assets/img/team-4.jpg" alt="team4"/>
                           </a>
                         </div>
@@ -95,10 +95,10 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
                             <img src="../assets/img/team-2.jpg" alt="team5"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img src="../assets/img/team-4.jpg" alt="team6"/>
                           </a>
                         </div>
@@ -132,10 +132,10 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
                             <img src="../assets/img/team-3.jpg" alt="team8"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img src="../assets/img/team-1.jpg" alt="team9"/>
                           </a>
                         </div>
@@ -169,16 +169,16 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img src="../assets/img/team-4.jpg" alt="user1"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
                             <img src="../assets/img/team-3.jpg" alt="user2"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
                             <img src="../assets/img/team-4.jpg" alt="user3"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img src="../assets/img/team-1.jpg" alt="user4"/>
                           </a>
                         </div>
@@ -212,7 +212,7 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img src="../assets/img/team-4.jpg" alt="user5"/>
                           </a>
                         </div>
@@ -246,10 +246,10 @@ export default function Table(){
                       </td>
                       <td>
                         <div className="avatar-group mt-2">
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img src="../assets/img/team-1.jpg" alt="user6"/>
                           </a>
-                          <a href="javascript:;" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
+                          <a href="#" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img src="../assets/img/team-4.jpg" alt="user7"/>
                           </a>
                         </div>

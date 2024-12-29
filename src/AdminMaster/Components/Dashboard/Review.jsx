@@ -58,7 +58,7 @@ export default function Review(){
                         </p>
                     </div>
                     <div className="w-40 text-end">
-                        <a className="btn btn-dark mb-0 text-end" href="javascript:;">View all reviews</a>
+                        <a className="btn btn-dark mb-0 text-end" href="#">View all reviews</a>
                     </div>
                     </div>
                 </div>

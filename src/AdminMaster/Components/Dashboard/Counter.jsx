@@ -21,13 +21,13 @@ export default function Counter (){
                 </div>
                 <div className="col-4">
                   <div className="dropdown text-end mb-6">
-                    <a href="javascript:;" className="cursor-pointer" id="dropdownUsers1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" className="cursor-pointer" id="dropdownUsers1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fa fa-ellipsis-h text-white"></i>
                     </a>
                     <ul className="dropdown-menu px-2 py-3" aria-labelledby="dropdownUsers1">
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Another action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Something else here</a></li>
                     </ul>
                   </div>
                   <p className="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+55%</p>
@@ -52,13 +52,13 @@ export default function Counter (){
                 </div>
                 <div className="col-4">
                   <div className="dropstart text-end mb-6">
-                    <a href="javascript:;" className="cursor-pointer" id="dropdownUsers2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" className="cursor-pointer" id="dropdownUsers2" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fa fa-ellipsis-h text-white"></i>
                     </a>
                     <ul className="dropdown-menu px-2 py-3" aria-labelledby="dropdownUsers2">
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Another action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Something else here</a></li>
                     </ul>
                   </div>
                   <p className="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+124%</p>
@@ -85,13 +85,13 @@ export default function Counter (){
                 </div>
                 <div className="col-4">
                   <div className="dropdown text-end mb-6">
-                    <a href="javascript:;" className="cursor-pointer" id="dropdownUsers3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#;" className="cursor-pointer" id="dropdownUsers3" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fa fa-ellipsis-h text-white"></i>
                     </a>
                     <ul className="dropdown-menu px-2 py-3" aria-labelledby="dropdownUsers3">
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Another action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Something else here</a></li>
                     </ul>
                   </div>
                   <p className="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+15%</p>
@@ -116,13 +116,13 @@ export default function Counter (){
                 </div>
                 <div className="col-4">
                   <div className="dropstart text-end mb-6">
-                    <a href="javascript:;" className="cursor-pointer" id="dropdownUsers4" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" className="cursor-pointer" id="dropdownUsers4" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fa fa-ellipsis-h text-white"></i>
                     </a>
                     <ul className="dropdown-menu px-2 py-3" aria-labelledby="dropdownUsers4">
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a className="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Another action</a></li>
+                      <li><a className="dropdown-item border-radius-md" href="#">Something else here</a></li>
                     </ul>
                   </div>
                   <p className="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+90%</p>

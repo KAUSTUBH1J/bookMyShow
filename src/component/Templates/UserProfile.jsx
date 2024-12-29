@@ -127,67 +127,61 @@ export default function UserProfile() {
     }
 
     return (
-        <>
-            <div className="modal fade show p-5" tabIndex="-1" style={StyledDiv}>
-                <div className="card mx-auto" style={{"maxWidth": "600px"}}>
-                    <form onSubmit={(e)=>handleSubmit(e)}>
-                        <div className="card-header text-center bg-primary text-white profile-image-section">
-                            <img src="https://via.placeholder.com/150" alt="Profile Image"  className="rounded-circle img-thumbnail mb-3" style={{'width':'120px', 'height': '120px'}} />
-                            <h3 id="user-name" className="mb-0">{UserDetails.first_name}</h3>
-                            <p id="user-type" className="mb-0">{UserDetails.last_name}</p>
-                            <div className="position-absolute top-0 end-0 p-2 btn-close flex-none cursor-pointer" fdprocessedid="hrxqhl" onClick={()=>{dispatch(CloseProfilePopUp())}} ></div>
-                        </div>
+        <div className="modal fade show p-5" tabIndex="-1" style={StyledDiv}>
+            <div className="card mx-auto" style={{"maxWidth": "600px"}}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
+                    <div className="card-header text-center bg-primary text-white profile-image-section">
+                        <img src="https://via.placeholder.com/150" alt="Profile Image"  className="rounded-circle img-thumbnail mb-3" style={{'width':'120px', 'height': '120px'}} />
+                        <h3 id="user-name" className="mb-0">{UserDetails.first_name}</h3>
+                        <p id="user-type" className="mb-0">{UserDetails.last_name}</p>
+                        <div className="position-absolute top-0 end-0 p-2 btn-close flex-none cursor-pointer" fdprocessedid="hrxqhl" onClick={()=>{dispatch(CloseProfilePopUp())}} ></div>
+                    </div>
 
-                        <div className="card-body">
-                            <h5 className="card-title">Profile Details</h5>
-                            <hr/>
-                            <div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">First Name:</label>
-                                <div className="col-sm-8" id="first-name">
-                                    { edit ? <input type="text" className='form-control'name='first_name' value={user.first_name} onChange={(e)=>handlechange(e)} />:user.first_name}
-                                </div>
+                    <div className="card-body">
+                        <h5 className="card-title">Profile Details</h5>
+                        <hr/>
+                        <div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">First Name:</label>
+                            <div className="col-sm-8" id="first-name">
+                                { edit ? <input type="text" className='form-control'name='first_name' value={user.first_name} onChange={(e)=>handlechange(e)} />:user.first_name}
                             </div>
-                            <div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">Last Name:</label>
-                                <div className="col-sm-8" id="last-name">
-                                    { edit ?  <input type="text" className='form-control' name='last_name' value={user.last_name} onChange={(e)=>handlechange(e)} />:user.last_name}
-                                </div>
-                            </div>
-                            <div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">Email:</label>
-                                <div className="col-sm-8" id="email">
-                                    { edit ?  <input type="email" className='form-control' name='email' value={user.email} onChange={(e)=>handlechange(e)} />:user.email}
-                                </div>
-                            </div>
-                            <div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">Phone Number:</label>
-                                <div className="col-sm-8" id="phone-number">
-                                    { edit ?  <input type="number" className='form-control' name='phone_number' value={user.phone_number} onChange={(e)=>handlechange(e)} />:user.phone_number}
-                                </div>
-                            </div>
-                            { !edit ?<div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">Account Created:</label>
-                                <div className="col-sm-8" id="created-at"> {UserDetails.created_at}</div>
-                            </div>:''}
-                            { !edit ?<div className="row mb-3">
-                                <label className="col-sm-4 fw-bold">Last Updated:</label>
-                                <div className="col-sm-8" id="updated-at"> {UserDetails.updated_at}</div>
-                            </div>:''}
                         </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">Last Name:</label>
+                            <div className="col-sm-8" id="last-name">
+                                { edit ?  <input type="text" className='form-control' name='last_name' value={user.last_name} onChange={(e)=>handlechange(e)} />:user.last_name}
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">Email:</label>
+                            <div className="col-sm-8" id="email">
+                                { edit ?  <input type="email" className='form-control' name='email' value={user.email} onChange={(e)=>handlechange(e)} />:user.email}
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">Phone Number:</label>
+                            <div className="col-sm-8" id="phone-number">
+                                { edit ?  <input type="number" className='form-control' name='phone_number' value={user.phone_number} onChange={(e)=>handlechange(e)} />:user.phone_number}
+                            </div>
+                        </div>
+                        { !edit ?<div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">Account Created:</label>
+                            <div className="col-sm-8" id="created-at"> {UserDetails.created_at}</div>
+                        </div>:''}
+                        { !edit ?<div className="row mb-3">
+                            <label className="col-sm-4 fw-bold">Last Updated:</label>
+                            <div className="col-sm-8" id="updated-at"> {UserDetails.updated_at}</div>
+                        </div>:''}
+                    </div>
 
-                        <div className="card-footer text-center">
-                            { edit ? 
-                                <>
-                                    <button className="btn btn-primary me-2" type='sumbit'>Submit</button>
-                                    <button className="btn btn-danger me-2" onClick={()=>handleEdit('show') }>close</button>
-                                </>:
-                                <button className="btn btn-primary me-2" onClick={()=>handleEdit('edit') }>Edit Profile</button>
-                            }
-                            { !edit ?<button className="btn btn-danger">Delete Account</button>:''}
-                        </div>
-                    </form>
-                </div>
+                    <div className="card-footer text-center">
+                        {edit?<><button className="btn btn-primary me-2" type='sumbit'>Submit</button><button className="btn btn-danger me-2" onClick={()=>handleEdit('show') }>close</button></>:<button className="btn btn-primary me-2" onClick={()=>handleEdit('edit') }>Edit Profile</button>}
+                        {!edit ?<button className="btn btn-danger">Delete Account</button>:''}
+                    </div>
+                </form>
+                
             </div>
-        </>
+
+        </div>
     )
 }

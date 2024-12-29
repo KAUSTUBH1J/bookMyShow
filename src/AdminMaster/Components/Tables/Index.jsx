@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from '../../Templates/Navbar';
 import Sidebar from "../../Templates/SideBar/Sidebar";
 import { GetMovies } from '../../../Function/ApiFunction';
-
+import { Link } from "react-router-dom";
 export default function Index() {
   const [movies, setMovies] = useState([]); // Default state as an empty array
 
@@ -78,7 +78,7 @@ export default function Index() {
               </tbody>
             </table>
 
-            <button className="btn btn-success mt-3">Add New Movie</button>
+            <Link to='/Admin/movies/AddMovie' className="btn btn-success mt-3">Add New Movie</Link>
           </div>
         </div>
       </main>
