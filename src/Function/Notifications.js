@@ -85,6 +85,7 @@ const Notification = ({ type, text, onRemove }) => {
       className={`relative flex items-center ${alerts[type].color} text-white text-sm font-bold px-4 py-3 rounded-md opacity-0 transform transition-all duration-500 mb-1`}
       style={{ animation: "fadeInOut 5.7s forwards" }}
     >
+      asdfsadf
       {alerts[type].icon}
       <p>{text}</p>
       <button

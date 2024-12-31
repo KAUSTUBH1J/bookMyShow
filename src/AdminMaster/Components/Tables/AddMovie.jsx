@@ -3,6 +3,7 @@ import Navbar from '../../Templates/Navbar';
 import Sidebar from "../../Templates/SideBar/Sidebar";
 import { GetMovies } from '../../../Function/ApiFunction';
 import axios from "../../../Config/axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 export default function Index() {
   
@@ -26,7 +27,7 @@ export default function Index() {
     files         : ''
   }); // Default state as an empty array
 
-
+  const Navigate = useNavigate();
   const handleChange = (e) =>{
     const { name, value, files } = e.target;
     setMovies((prevMovies) => ({
@@ -42,10 +43,6 @@ export default function Index() {
     
   }
 
-  // Monitor changes in the movies state
-  useEffect(() => {
-    console.log("Movies updated:", movies);
-  }, [movies]);
 
   const validation = () => {
     let hasError = false;
@@ -98,14 +95,14 @@ export default function Index() {
     setError(massage); // Update errors in state
     return !hasError; // Return true if no errors
   };
-  
+ 
   const SubmitMovie = async (e) =>{
     e.preventDefault();
 
     let isValidate = validation();
     if(isValidate){
-      console.log('successfull');
-      console.log(movies);
+      // console.log('successfull');
+      // console.log(movies);
 
       const formData = new FormData();
       formData.append("title", movies.title);
@@ -122,9 +119,12 @@ export default function Index() {
             "Content-Type": "multipart/form-data",
           },
         });
+        Navigate('/Admin/movies');
         console.log(response);
+        
       } catch (error) {
         console.warn('error' + error);  
+        setError({API:error});
       }
     }
   }
@@ -181,7 +181,9 @@ export default function Index() {
                 <input type="file" id="poster" name="files" className="form-control-file" accept="image/*"  onChange={handleChange}    />
                 {error.file && <small className="text-danger">{error.poster}</small>}
               </div>
-              
+              <div className="form-group">
+                {error.API && <small className="text-danger">{error.API}</small>}
+              </div>
               <button type="submit" className="btn btn-primary">Add Movie</button>
             </form>
           </div>

@@ -1,40 +1,46 @@
 import React,{ Suspense, lazy }  from 'react';
 import Navbar from '../../Templates/Navbar';
-import Sidebar from '../../Templates/SideBar/Sidebar';
 import CSSLoader from '../../../Function/CssLoader';
 import { Link } from 'react-router-dom';
 import LoadingComponent from './LoadingComponent';
+import LoadingSideBar from '../../Templates/SideBar/LoadingSide';
 import Footer from './Footer';
 
 const simulateDelay = (ms, promise) =>
   new Promise(resolve => setTimeout(() => resolve(promise), ms));
 
 const Counter = lazy(()=>
-  simulateDelay(5000, import('./Counter'))
+  simulateDelay(1000, import('./Counter'))
 );
 const Review = lazy(()=>
-  simulateDelay(5000, import('./Review'))
+  simulateDelay(1000, import('./Review'))
 );
 const Table = lazy(()=>
-  simulateDelay(5000, import('./Table'))
+  simulateDelay(1000, import('./Table'))
 );
 const UpCommingList = lazy(()=>
-  simulateDelay(5000, import('./UpCommingList'))
+  simulateDelay(1000, import('./UpCommingList'))
 );
 const ActiveUser = lazy(()=>
-  simulateDelay(5000, import('./ActiveUser'))
+  simulateDelay(1000, import('./ActiveUser'))
 );
 const SaleOverview = lazy(()=>
-  simulateDelay(5000, import('./SaleOverview'))
+  simulateDelay(1000, import('./SaleOverview'))
 );
 
+const SideBar = lazy(()=>
+  simulateDelay(1000, import('../../Templates/SideBar/Sidebar'))
+);
 
 export default function Dashboard() {
   CSSLoader('Assets/CSS/AdminMaster/soft-ui-dashboard.css');
   
   return (
     <>
-      <Sidebar />
+      
+      <Suspense fallback={<LoadingSideBar />}>
+        <SideBar />
+      </Suspense>
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <Navbar pageName="Dashboard" />
         

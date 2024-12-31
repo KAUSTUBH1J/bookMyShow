@@ -11,7 +11,6 @@ export default function MoviePopUp(props) {
         dispatch()
     }
 
-    console.log('props '+movie);
     return (
         <div>
             {movie?  (

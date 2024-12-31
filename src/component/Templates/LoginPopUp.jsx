@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CSSLoader from "../../Function/CssLoader";
 import {GetDateAndTime} from '../../Function/CurrentDate';
 
+
 function Login (){
 	CSSLoader('Assets/CSS/UserSide/main.css');
 
@@ -44,6 +45,7 @@ function Login (){
 				
 				dispatch(SetDetails(response.data.user));
                 dispatch(RemovePopUp());
+
             } catch (error) {
                 if (error.response && error.response.data) {
                     setError(error.response.data.detail || "An error occurred during login.");
@@ -137,7 +139,6 @@ function Login (){
 	};
 
 	
-
 	const handleSignUpSummit = async (e) =>{
 		e.preventDefault();
 		const ValidationCheck = validate();
@@ -145,13 +146,12 @@ function Login (){
 			try{
 				const Data = userDetail;
 
-				Data['user_type'] 	= 'user';
+				Data['user_type'] 	= 'admin';
 				Data['created_at'] 	= GetDateAndTime();
 				Data['updated_at'] 	= GetDateAndTime();
 
 				const response = await axios.post('/api/v1/users/',Data);
-				console.log('SignUp successful:', response);
-
+				
 				setUserDetail({
 					first_name : '',
 					last_name : '',

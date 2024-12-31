@@ -10,7 +10,7 @@ export default function Index() {
     const fetchMoviesDetails = async () => {
       try {
         const response = await GetMovies(); // Await the API response
-        console.log('Fetched Movies Detail:', response);
+
         setMovies(response || []); // Set response or fallback to an empty array
       } catch (error) {
         console.error('Error fetching movie details:', error);
@@ -33,14 +33,14 @@ export default function Index() {
               <thead className="thead-dark">
                 <tr>
                   <th>#</th>
-                  <th>Title</th>
-                  <th>Genre</th>
-                  <th>Language</th>
-                  <th>Release Date</th>
-                  <th>Duration (mins)</th>
-                  <th>Description</th>
-                  <th>Poster</th>
-                  <th>Actions</th>
+                  <th width="10%">Title</th>
+                  <th width="10%">Genre</th>
+                  <th width="10%">Language</th>
+                  <th width="10%">Release Date</th>
+                  <th width="10%">Duration (mins)</th>
+                  <th width="20%">Description</th>
+                  <th width="10%">Poster</th>
+                  <th width="10%">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,12 +51,16 @@ export default function Index() {
                       <td>{movie.title}</td>
                       <td>{movie.genre}</td>
                       <td>{movie.language}</td>
-                      <td>{movie.releaseDate}</td>
+                      <td>{movie.release_date}</td>
                       <td>{movie.duration}</td>
-                      <td>{movie.description}</td>
+                      <td><p>{movie.description}</p></td>
                       <td>
                         <img
-                          src={`C:/Users/kaustubh.jadhav/Desktop/Git hub/Backend/BookMyShow/app/` + movie.poster[0].file_path || "https://via.placeholder.com/50"}
+                          src={
+                            movie.poster && movie.poster.length > 0
+                              ? `C:/Users/kaustubh.jadhav/Desktop/Git hub/Backend/BookMyShow/app/${movie.poster[0].file_path.replace(/[\[\]"]/g, "")}` // Update with your API base URL
+                              : "https://via.placeholder.com/50"
+                          }
                           alt="Poster"
                           className="img-thumbnail"
                           width="50"

@@ -27947,5 +27947,8 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }
+.bg-secondary {
+  background-color: #b8b8bc !important;
+}
 
 /*# sourceMappingURL=dashboard-free.css.map */

@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TiggleSideBar } from '../../../Store/Settings/setting';
 
 const Sidebar = () => {
+  CSSLoader('Assets/CSS/AdminMaster/custom.css');
   CSSLoader('Assets/CSS/AdminMaster/soft-ui-dashboard.css');
-
   const menuItems = [
     {
       label: 'Dashboard',
